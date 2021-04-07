@@ -9,6 +9,8 @@ import { useContext } from 'react/cjs/react.development';
 import { AuthContext } from '../navigation/AuthProvider';
 import { ResponseType } from 'expo-auth-session';
 import * as Google from 'expo-auth-session/providers/google';
+import * as firebase from 'firebase'
+
 
 
 
@@ -70,13 +72,10 @@ export default function Login({navigation}){
                 <Text style={styles.navButton}>Forgot Password?</Text>
             </TouchableOpacity>
 
-            <SocialButton
-            buttonTitle="Sign In with Facebook"
-            buttonType="facebook-official"
-            color="#4867aa"
-            backgroundColor="#e6eaf4"
-            onPress={()=>{}}
-            />
+            
+
+            <Text style={styles.navButton}>or</Text>
+
 
             <SocialButton
             buttonTitle="Sign In with Google"

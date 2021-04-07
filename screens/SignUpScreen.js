@@ -6,18 +6,69 @@ import SocialButton from '../components/SocialButton'
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import {AuthContext} from '../navigation/AuthProvider'
 import {registration} from '../api/firebaseMethods'
+import * as Google from 'expo-auth-session/providers/google';
+import * as firebase from 'firebase'
+import {Alert} from 'react-native'
 
 
 
 
 export default function SignUp({navigation}){
 
+
+  
+
+
     const [email,setEmail]=useState()
     const [password,setPassword]=useState()
     const [confirmPassword,setConfirmPassword]=useState()
 
       const {register} = useContext(AuthContext)
+
+      const [request, response, promptAsync] = Google.useIdTokenAuthRequest(
+        {
+          clientId: '13474305420-1lvdv21fir0c19kgo3f3gtf9rcu1fcsj.apps.googleusercontent.com',
+          },
+      );
     
+      React.useEffect(() => {
+        if (response?.type === 'success') {
+          const { id_token } = response.params;
+          
+          const credential = firebase.auth.GoogleAuthProvider.credential(id_token);
+          firebase.auth().signInWithCredential(credential);
+        }
+      }, [response]);
+    
+
+
+
+      //------------------------Form Validation check starts
+
+  const handlePress = () => {
+    
+    if (!email) {
+    Alert.alert('Email field is required.');
+  } else if (!password) {
+    Alert.alert('Password field is required.');
+  } else if (!confirmPassword) {
+    
+    Alert.alert('Confirm password field is required.');
+  } else if (password !== confirmPassword) {
+    Alert.alert('Password does not match!');
+  } else {
+    register(
+      email,
+      password,
+      
+    );
+    
+  }
+};
+
+//----------------------------Form validation ends
+
+
 
     return(
         <View style={styles.container}>
@@ -52,26 +103,20 @@ export default function SignUp({navigation}){
 
             <FormButton 
             buttonTitle="Sign Up"
-             onPress={()=> register(email,password)}
-            // onPress={()=> {}}
+              onPress={handlePress}
+            //  onPress={()=> }
             />
 
            
-
-            <SocialButton
-            buttonTitle="Sign Up with Facebook"
-            buttonType="facebook-official"
-            color="#4867aa"
-            backgroundColor="#e6eaf4"
-            onPress={()=>{}}
-            />
+              <Text style={styles.navButton}>or</Text>
+            
 
             <SocialButton
             buttonTitle="Sign Up with Google"
             buttonType="google"
             color="#de4d41"
             backgroundColor="#f5e7ea"
-            onPress={()=>{}}
+            onPress={()=>{ promptAsync()}}
             />
 
             <TouchableOpacity style={styles.navButton} onPress={()=>{navigation.navigate('Login')}}>

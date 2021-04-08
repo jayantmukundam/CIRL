@@ -1,10 +1,11 @@
 {
   "expo": {
     "name": "cirl_v3",
-    "slug": "CIRL",
+    "slug": "cirl",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
+    "scheme": "exp://wg-qka.community.app.exp.direct:80",
     
     "splash": {
       "image": "./assets/splash.png",

@@ -1,16 +1,20 @@
-import React from 'react'
-import { View, Text ,StyleSheet} from 'react-native'
+import React,{useState,useEffect} from 'react'
+import { View, Text ,StyleSheet,Button} from 'react-native'
 import { useContext } from 'react/cjs/react.development'
 import FormButton from '../components/FormButton'
-import { AuthContext } from '../navigation/AuthProvider'
+// import { AuthContext } from '../navigation/AuthProvider'
+import { BarCodeScanner } from 'expo-barcode-scanner';
 
-export default function HomeScreen() {
+export default function HomeScreen({navigation}) {
 
-    const {user,logout} = useContext(AuthContext)
+   
+
+    
     return (
+        
         <View style={styles.container}>
-            <Text style={styles.text}>Welcome {user.uid}</Text>
-            <FormButton buttonTitle='Logout' onPress={()=>logout()}/>
+            <Text style={styles.text}>Home Screen</Text>
+            <FormButton buttonTitle='Tap to Scan' onPress={()=>navigation.navigate("BarCode")}/>
            
         </View>
     )

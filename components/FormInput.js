@@ -14,6 +14,7 @@ export default function FormInput({labelValue,placeHolderText,iconType,...rest})
             <TextInput
             style={styles.input}
             value={labelValue}
+            
             placeholder={placeHolderText}
             {...rest}
             />
@@ -36,6 +37,7 @@ const styles = StyleSheet.create({
       flexDirection: 'row',
       alignItems: 'center',
       backgroundColor: '#fff',
+      fontFamily:'ubuntu'
     },
     iconStyle: {
       padding: 10,
@@ -50,7 +52,7 @@ const styles = StyleSheet.create({
       padding: 10,
       flex: 1,
       fontSize: 16,
-    //   fontFamily: 'Lato-Regular',
+      fontFamily: 'ubuntu',
       color: '#333',
       justifyContent: 'center',
       alignItems: 'center',

@@ -9,6 +9,8 @@ import { useContext } from 'react/cjs/react.development';
 import { AuthContext } from '../navigation/AuthProvider';
 import { ResponseType } from 'expo-auth-session';
 import * as Google from 'expo-auth-session/providers/google';
+import * as firebase from 'firebase'
+
 
 
 
@@ -51,6 +53,7 @@ export default function Login({navigation}){
             keyboardType="email-address"
             autoCapitalize="none"
             autoCorrect = {false}
+            
             />
 
             <FormInput
@@ -70,19 +73,17 @@ export default function Login({navigation}){
                 <Text style={styles.navButton}>Forgot Password?</Text>
             </TouchableOpacity>
 
-            <SocialButton
-            buttonTitle="Sign In with Facebook"
-            buttonType="facebook-official"
-            color="#4867aa"
-            backgroundColor="#e6eaf4"
-            onPress={()=>{}}
-            />
+            
+
+            <Text style={styles.navButton}>or</Text>
+
 
             <SocialButton
             buttonTitle="Sign In with Google"
             buttonType="google"
             color="#de4d41"
             backgroundColor="#f5e7ea"
+            
             onPress={()=>{ promptAsync()}}
             />
 
@@ -101,19 +102,10 @@ const styles = StyleSheet.create({
       padding: 20,
       paddingTop: 50
     },
-    // logo: {
-    //   height: 150,
-    //   width: 150,
-    //   resizeMode: 'cover',
-    // },
-    text: {
-    //   fontFamily: 'Kufam-SemiBoldItalic',
-      fontSize: 28,
-      marginBottom: 10,
-      color: '#051d5f',
-    },
+    
     navButton: {
       marginTop: 15,
+      fontFamily:'ubuntu'
     },
     forgotButton: {
       marginVertical: 35,

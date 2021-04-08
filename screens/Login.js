@@ -53,6 +53,7 @@ export default function Login({navigation}){
             keyboardType="email-address"
             autoCapitalize="none"
             autoCorrect = {false}
+            
             />
 
             <FormInput
@@ -82,6 +83,7 @@ export default function Login({navigation}){
             buttonType="google"
             color="#de4d41"
             backgroundColor="#f5e7ea"
+            
             onPress={()=>{ promptAsync()}}
             />
 
@@ -100,19 +102,10 @@ const styles = StyleSheet.create({
       padding: 20,
       paddingTop: 50
     },
-    // logo: {
-    //   height: 150,
-    //   width: 150,
-    //   resizeMode: 'cover',
-    // },
-    text: {
-    //   fontFamily: 'Kufam-SemiBoldItalic',
-      fontSize: 28,
-      marginBottom: 10,
-      color: '#051d5f',
-    },
+    
     navButton: {
       marginTop: 15,
+      fontFamily:'ubuntu'
     },
     forgotButton: {
       marginVertical: 35,

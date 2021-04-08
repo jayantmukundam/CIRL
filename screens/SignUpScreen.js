@@ -140,13 +140,14 @@ const styles = StyleSheet.create({
     //   resizeMode: 'cover',
     // },
     text: {
-    //   fontFamily: 'Kufam-SemiBoldItalic',
+     fontFamily: 'ubuntu',
       fontSize: 28,
       marginBottom: 10,
       color: '#051d5f',
     },
     navButton: {
       marginTop: 15,
+      fontFamily:'ubuntu'
     },
     
     navButtonText: {

@@ -9,6 +9,12 @@ export default function OnboardingScreen({navigation}){
   pages={[
     {
       backgroundColor: '#a6e4d0',
+      titleStyles:{
+        fontFamily: 'ubuntu-bold',
+      },
+      subTitleStyles:{
+        fontFamily:'ubuntu',
+      },
     //   image: <Image source={require('./images/circle.png')} />,
       title: 'Onboarding 1',
       subtitle: 'Done with React Native Onboarding Swiper',
@@ -16,6 +22,12 @@ export default function OnboardingScreen({navigation}){
     
     {
         backgroundColor: '#fdeb93',
+        titleStyles:{
+          fontFamily: 'ubuntu-bold',
+        },
+        subTitleStyles:{
+          fontFamily:'ubuntu',
+        },
       //   image: <Image source={require('./images/circle.png')} />,
         title: 'Onboarding 2',
         subtitle: 'Done with React Native Onboarding Swiper',

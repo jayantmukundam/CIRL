@@ -5,7 +5,7 @@ import FormButton from '../components/FormButton'
 import SocialButton from '../components/SocialButton'
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import {AuthContext} from '../navigation/AuthProvider'
-import {registration} from '../api/firebaseMethods'
+
 import * as Google from 'expo-auth-session/providers/google';
 import * as firebase from 'firebase'
 import {Alert} from 'react-native'

@@ -1,6 +1,7 @@
 import React from 'react'
 import { View, Text,TextInput,StyleSheet } from 'react-native'
 import { AntDesign } from '@expo/vector-icons';
+import { Entypo } from '@expo/vector-icons';
 import {windowHeight, windowWidth} from '../utils/Dimensions';
 
 
@@ -8,7 +9,7 @@ export default function FormInput({labelValue,placeHolderText,iconType,...rest})
     return (
         <View style={styles.inputContainer}>
             <View style={styles.iconStyle}>
-            <AntDesign name={iconType} size={25} color="black" />
+            <Entypo name={iconType} size={22} color="black" />
 
             </View>
             <TextInput

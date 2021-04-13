@@ -2,7 +2,17 @@ import * as firebase from "firebase";
 import "firebase/firestore";
 import {Alert} from "react-native";
 
-export async function registration(email, password) {
+import { LogBox } from 'react-native';
+import _ from 'lodash';
+
+LogBox.ignoreLogs(['Setting a timer']);
+const _console = _.clone(console);
+console.warn = message => {
+  if (message.indexOf('Setting a timer') <= -1) {
+    _console.warn(message);
+  }
+};
+export async function registration(email, password, name) {
   try {
     await firebase.auth().createUserWithEmailAndPassword(email, password);
     const currentUser = firebase.auth().currentUser;
@@ -12,6 +22,7 @@ export async function registration(email, password) {
       .doc(currentUser.uid)
       .set({
         email: currentUser.email,
+        name: name,
         
       });
   } catch (err) {

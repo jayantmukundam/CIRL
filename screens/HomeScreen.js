@@ -5,6 +5,7 @@ import FormButton from '../components/FormButton'
 // import { AuthContext } from '../navigation/AuthProvider'
 import { BarCodeScanner } from 'expo-barcode-scanner';
 
+
 export default function HomeScreen({navigation}) {
 
    
@@ -12,11 +13,17 @@ export default function HomeScreen({navigation}) {
     
     return (
         
-        <View style={styles.container}>
-            <Text style={styles.text}>Home Screen</Text>
-            <FormButton buttonTitle='Tap to Scan' onPress={()=>navigation.navigate("BarCode")}/>
+        // <View style={styles.container}>
+        //     <Text style={styles.text}>Home Screen</Text>
+        //     <FormButton buttonTitle='Tap to Scan' onPress={()=>navigation.navigate("BarCode")}/>
            
-        </View>
+        // </View>
+
+<View style={styles.container}>
+<Text style={styles.text}>Home Screen</Text>
+<FormButton buttonTitle='Tap to Scan' onPress={()=>navigation.navigate("BarCode")}/>
+
+</View>
     )
 }
 

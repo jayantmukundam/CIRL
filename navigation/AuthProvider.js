@@ -1,5 +1,6 @@
 import React,{createContext,useState} from 'react'
-import firebase from 'firebase'
+import * as firebase from "firebase";
+import "firebase/firestore";
 import {Alert} from 'react-native'
 import * as Google from 'expo-google-app-auth';
 export const AuthContext = createContext()
@@ -12,19 +13,31 @@ export const AuthProvider = ({children})=>{
         value={{
             user,
             setUser,
-            login:async(email,password)=>{
-                try{
-                   await firebase.auth().signInWithEmailAndPassword(email,password)
-                } catch(err){
-                    Alert.alert("There is something wrong!!!!", err.message);
-                }
+            login:async(email, password)=>{
+              try {
+                await firebase
+                   .auth()
+                   .signInWithEmailAndPassword(email, password);
+               } catch (err) {
+                 Alert.alert("There is something wrong!", err.message);
+               }
             },
-            register:async(email,password)=>{
-                try{
-                   await firebase.auth().createUserWithEmailAndPassword(email,password)
-                } catch(err){
-                    Alert.alert("There is something wrong!!!!", err.message);
-                }
+            register:async(email,password,name)=>{
+              try {
+                await firebase.auth().createUserWithEmailAndPassword(email, password);
+                const currentUser = firebase.auth().currentUser;
+            
+                const db = firebase.firestore();
+                db.collection("users")
+                  .doc(currentUser.uid)
+                  .set({
+                    email: currentUser.email,
+                    name: name,
+                    
+                  });
+              } catch (err) {
+                Alert.alert("There is something wrong!!!!", err.message);
+              }
             },
             googleLogin:async()=> {
                 try {
@@ -45,11 +58,11 @@ export const AuthProvider = ({children})=>{
                 }
               },
             logout:async()=>{
-                try{
-                    await firebase.auth().signOut()
-                } catch(err){
-                    Alert.alert("There is something wrong!!!!", err.message);
-                }
+              try {
+                await firebase.auth().signOut();
+              } catch (err) {
+                Alert.alert('There is something wrong!', err.message);
+              }
             },
         }}
         >

@@ -18,7 +18,7 @@ export default function SignUp({navigation}){
 
   
 
-
+    const [name,setName]=useState()
     const [email,setEmail]=useState()
     const [password,setPassword]=useState()
     const [confirmPassword,setConfirmPassword]=useState()
@@ -46,6 +46,11 @@ export default function SignUp({navigation}){
       //------------------------Form Validation check starts
 
   const handlePress = () => {
+
+
+    if (!name) {
+      Alert.alert('Email field is required.');
+    }
     
     if (!email) {
     Alert.alert('Email field is required.');
@@ -60,6 +65,7 @@ export default function SignUp({navigation}){
     register(
       email,
       password,
+      name,
       
     );
     
@@ -74,12 +80,21 @@ export default function SignUp({navigation}){
         <View style={styles.container}>
             <Text style={styles.text}>Create an account</Text>
 
+            <FormInput
+            labelValue={name}
+            onChangeText={(name)=>setName(name)}
+            placeHolderText="Name"
+            iconType="user"
+            // keyboardType="email-address"
+            // autoCapitalize="none"
+            autoCorrect = {false}
+            />
 
             <FormInput
             labelValue={email}
             onChangeText={(userEmail)=>setEmail(userEmail)}
             placeHolderText="Email"
-            iconType="user"
+            iconType="email"
             keyboardType="email-address"
             autoCapitalize="none"
             autoCorrect = {false}

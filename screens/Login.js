@@ -49,7 +49,7 @@ export default function Login({navigation}){
             labelValue={email}
             onChangeText={(userEmail)=>setEmail(userEmail)}
             placeHolderText="Email"
-            iconType="user"
+            iconType="email"
             keyboardType="email-address"
             autoCapitalize="none"
             autoCorrect = {false}

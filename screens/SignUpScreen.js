@@ -66,24 +66,7 @@ export default function SignUp({navigation}){
     //------------------------Form Validation check starts
 
     const handlePress = () => {
-        if (!name) {
-            Alert.alert("Email field is required.")
-        }
-
-        if (!email) {
-            Alert.alert("Email field is required.")
-        } else if (!password) {
-            Alert.alert("Password field is required.")
-        } else if (!confirmPassword) {
-            Alert.alert("Confirm password field is required.")
-        } else if (password !== confirmPassword) {
-            Alert.alert("Password does not match!")
-        } else {
-            register(email, password, name)
-        }
-    }
-
-    //----------------------------Form validation ends
+        
 
     if (!name) {
       Alert.alert('Email field is required.');
@@ -109,7 +92,9 @@ export default function SignUp({navigation}){
     );
     
   }
-};
+
+}
+
 
 //----------------------------Form validation ends
 

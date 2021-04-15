@@ -3,16 +3,36 @@ import * as firebase from "firebase";
 import "firebase/firestore";
 import {Alert} from 'react-native'
 import * as Google from 'expo-google-app-auth';
+
+import { LogBox } from 'react-native';
+import _ from 'lodash';
+
+LogBox.ignoreLogs(['Setting a timer']);
+const _console = _.clone(console);
+console.warn = message => {
+  if (message.indexOf('Setting a timer') <= -1) {
+    _console.warn(message);
+  }
+};
+
+
 export const AuthContext = createContext()
 
 export const AuthProvider = ({children})=>{
 
     const [user,setUser] = useState(null)
+
+    const [loggedInWithGoogle,setLoggedInWithGoogle] = useState(false)
+
+    
+    
     return (
         <AuthContext.Provider
         value={{
             user,
             setUser,
+           loggedInWithGoogle,
+           setLoggedInWithGoogle,
             login:async(email, password)=>{
               try {
                 await firebase
@@ -28,6 +48,8 @@ export const AuthProvider = ({children})=>{
                 const currentUser = firebase.auth().currentUser;
             
                 const db = firebase.firestore();
+
+                
                 db.collection("users")
                   .doc(currentUser.uid)
                   .set({
@@ -39,24 +61,28 @@ export const AuthProvider = ({children})=>{
                 Alert.alert("There is something wrong!!!!", err.message);
               }
             },
-            googleLogin:async()=> {
-                try {
-                  const result = await Google.logInAsync({
-                      behavior:'web',
-                    androidClientId: 13474305420-fed85664a5s6kd5f3bdk1qi8epjmq0ke.apps.googleusercontent.com,
+            googleLogin:()=> {
+
+
+
+              try{
+                const currentUser = firebase.auth().currentUser;
+
+                const db = firebase.firestore();
+                
+                db.collection("users")
+                  .doc(currentUser.uid)
+                  .set({
+                    email: currentUser.email,
+                    name: currentUser.displayName,
                     
-                    scopes: ['profile', 'email'],
                   });
-              
-                  if (result.type === 'success') {
-                    return result.accessToken;
-                  } else {
-                    return { cancelled: true };
-                  }
-                } catch (e) {
-                  return { error: true };
-                }
-              },
+              }catch (err) {
+                Alert.alert("There is something wrong!!!!", err.message);
+              }
+            },
+
+
             logout:async()=>{
               try {
                 await firebase.auth().signOut();

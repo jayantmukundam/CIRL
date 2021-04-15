@@ -13,6 +13,7 @@ import {Alert} from 'react-native'
 
 
 
+
 export default function SignUp({navigation}){
 
 
@@ -23,22 +24,50 @@ export default function SignUp({navigation}){
     const [password,setPassword]=useState()
     const [confirmPassword,setConfirmPassword]=useState()
 
-      const {register} = useContext(AuthContext)
+      const {register,setLoggedInWithGoogle} = useContext(AuthContext)
 
-      const [request, response, promptAsync] = Google.useIdTokenAuthRequest(
-        {
-          clientId: '13474305420-1lvdv21fir0c19kgo3f3gtf9rcu1fcsj.apps.googleusercontent.com',
-          },
-      );
-    
-      React.useEffect(() => {
-        if (response?.type === 'success') {
-          const { id_token } = response.params;
-          
-          const credential = firebase.auth.GoogleAuthProvider.credential(id_token);
-          firebase.auth().signInWithCredential(credential);
-        }
-      }, [response]);
+
+
+      const handleGoogleSignUp=()=>{
+        setLoggedInWithGoogle(true)
+      }
+
+      
+      
+
+        const [request, response, promptAsync] = Google.useIdTokenAuthRequest(
+          {
+            clientId: '13474305420-1lvdv21fir0c19kgo3f3gtf9rcu1fcsj.apps.googleusercontent.com',
+  
+            },
+  
+            
+            
+        );
+      
+        React.useEffect(() => {
+          if (response?.type === 'success') {
+            const { id_token } = response.params;
+           
+            
+            const credential = firebase.auth.GoogleAuthProvider.credential(id_token);
+            firebase.auth().signInWithCredential(credential);
+  
+             
+           
+           
+  
+             
+            
+          }
+        }, [response]);
+
+      
+
+      
+
+
+      
     
 
 
@@ -62,6 +91,8 @@ export default function SignUp({navigation}){
   } else if (password !== confirmPassword) {
     Alert.alert('Password does not match!');
   } else {
+
+    setLoggedInWithGoogle(false)
     register(
       email,
       password,
@@ -119,7 +150,7 @@ export default function SignUp({navigation}){
             <FormButton 
             buttonTitle="Sign Up"
               onPress={handlePress}
-            //  onPress={()=> }
+            
             />
 
            
@@ -131,7 +162,8 @@ export default function SignUp({navigation}){
             buttonType="google"
             color="#de4d41"
             backgroundColor="#f5e7ea"
-            onPress={()=>{ promptAsync()}}
+             onPress={()=>{ promptAsync();handleGoogleSignUp()}}
+            
             />
 
             <TouchableOpacity style={styles.navButton} onPress={()=>{navigation.navigate('Login')}}>

@@ -5,13 +5,15 @@ import { useContext } from "react/cjs/react.development"
 import FormButton from "../components/FormButton"
 import { AuthContext } from "../navigation/AuthProvider"
 
+
 import "firebase/firestore"
 
 export default function ProfileScreen() {
     const { user, logout } = useContext(AuthContext)
-    const [name, setName] = useState("")
-    const fetchName = () => {
-        // console.log("Name")
+     const [name, setName] = useState("")
+
+    
+    
         firebase
             .firestore()
             .collection("users")
@@ -19,8 +21,8 @@ export default function ProfileScreen() {
             .get()
             .then((snapshot) => {
                 if (snapshot.exists) {
-                    setName(snapshot.data().name)
-                    console.log(snapshot.data().name)
+                      setName(snapshot.data().name)
+                    
                 } else {
                     console.log("does not exist")
                 }
@@ -28,12 +30,12 @@ export default function ProfileScreen() {
             .catch((err) => {
                 console.log(err)
             })
-    }
-
+  
+    
     return (
         <View style={styles.container}>
             <Text style={styles.text}>Welcome {name}</Text>
-            <FormButton buttonTitle="fetchName" onPress={fetchName} />
+            
             <FormButton buttonTitle="Logout" onPress={() => logout()} />
         </View>
     )

@@ -1,38 +1,67 @@
-import React, { useState, useContext } from "react"
-import { Button, StyleSheet, Text, Touchable, View } from "react-native"
-import FormInput from "../components/FormInput"
-import FormButton from "../components/FormButton"
-import SocialButton from "../components/SocialButton"
-import { TouchableOpacity } from "react-native-gesture-handler"
-import { AuthContext } from "../navigation/AuthProvider"
+import React,{useState,useContext} from 'react';
+import { Button, StyleSheet, Text, Touchable, View } from 'react-native';
+import FormInput from '../components/FormInput'
+import FormButton from '../components/FormButton'
+import SocialButton from '../components/SocialButton'
+import { TouchableOpacity } from 'react-native-gesture-handler';
+import {AuthContext} from '../navigation/AuthProvider'
 
-import * as Google from "expo-auth-session/providers/google"
-import * as firebase from "firebase"
-import { Alert } from "react-native"
+import * as Google from 'expo-auth-session/providers/google';
+import * as firebase from 'firebase'
+import {Alert} from 'react-native'
 
-export default function SignUp({ navigation }) {
-    const [name, setName] = useState()
-    const [email, setEmail] = useState()
-    const [password, setPassword] = useState()
-    const [confirmPassword, setConfirmPassword] = useState()
 
-    const { register } = useContext(AuthContext)
 
-    const [request, response, promptAsync] = Google.useIdTokenAuthRequest({
-        clientId:
-            "13474305420-1lvdv21fir0c19kgo3f3gtf9rcu1fcsj.apps.googleusercontent.com",
-    })
 
-    React.useEffect(() => {
-        if (response?.type === "success") {
-            const { id_token } = response.params
 
-            const credential = firebase.auth.GoogleAuthProvider.credential(
-                id_token
-            )
-            firebase.auth().signInWithCredential(credential)
-        }
-    }, [response])
+export default function SignUp({navigation}){
+
+
+  
+
+    const [name,setName]=useState()
+    const [email,setEmail]=useState()
+    const [password,setPassword]=useState()
+    const [confirmPassword,setConfirmPassword]=useState()
+
+      const {register,setLoggedInWithGoogle} = useContext(AuthContext)
+
+
+
+      const handleGoogleSignUp=()=>{
+        setLoggedInWithGoogle(true)
+      }
+
+      
+      
+
+        const [request, response, promptAsync] = Google.useIdTokenAuthRequest(
+          {
+            clientId: '13474305420-1lvdv21fir0c19kgo3f3gtf9rcu1fcsj.apps.googleusercontent.com',
+  
+            },
+  
+            
+            
+        );
+      
+        React.useEffect(() => {
+          if (response?.type === 'success') {
+            const { id_token } = response.params;
+           
+            
+            const credential = firebase.auth.GoogleAuthProvider.credential(id_token);
+            firebase.auth().signInWithCredential(credential);
+  
+             
+           
+           
+  
+             
+            
+          }
+        }, [response]);
+
 
     //------------------------Form Validation check starts
 
@@ -56,7 +85,37 @@ export default function SignUp({ navigation }) {
 
     //----------------------------Form validation ends
 
-    return (
+    if (!name) {
+      Alert.alert('Email field is required.');
+    }
+    
+    if (!email) {
+    Alert.alert('Email field is required.');
+  } else if (!password) {
+    Alert.alert('Password field is required.');
+  } else if (!confirmPassword) {
+    
+    Alert.alert('Confirm password field is required.');
+  } else if (password !== confirmPassword) {
+    Alert.alert('Password does not match!');
+  } else {
+
+    setLoggedInWithGoogle(false)
+    register(
+      email,
+      password,
+      name,
+      
+    );
+    
+  }
+};
+
+//----------------------------Form validation ends
+
+
+
+    return(
         <View style={styles.container}>
             <Text style={styles.text}>Create an account</Text>
 
@@ -98,22 +157,22 @@ export default function SignUp({ navigation }) {
                 secureTextEntry={true}
             />
 
-            <FormButton
-                buttonTitle="Sign Up"
-                onPress={handlePress}
-                //  onPress={()=> }
+
+            <FormButton 
+            buttonTitle="Sign Up"
+              onPress={handlePress}
+            
             />
 
             <Text style={styles.navButton}>or</Text>
 
             <SocialButton
-                buttonTitle="Sign Up with Google"
-                buttonType="google"
-                color="#de4d41"
-                backgroundColor="#f5e7ea"
-                onPress={() => {
-                    promptAsync()
-                }}
+            buttonTitle="Sign Up with Google"
+            buttonType="google"
+            color="#de4d41"
+            backgroundColor="#f5e7ea"
+             onPress={()=>{ promptAsync();handleGoogleSignUp()}}
+            
             />
 
             <TouchableOpacity

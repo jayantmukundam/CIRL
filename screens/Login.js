@@ -19,7 +19,16 @@ export default function Login({navigation}){
     const [email,setEmail]=useState()
     const [password,setPassword]=useState()
 
-    const {login} = useContext(AuthContext)
+    const {login,setLoggedInWithGoogle} = useContext(AuthContext)
+
+
+    const handleGoogleLogin=()=>{
+      setLoggedInWithGoogle(true)
+    }
+
+    const handleNormalLogin=()=>{
+      setLoggedInWithGoogle(false)
+    }
 
 
     const [request, response, promptAsync] = Google.useIdTokenAuthRequest(
@@ -66,7 +75,7 @@ export default function Login({navigation}){
 
             <FormButton 
             buttonTitle="Sign In"
-            onPress={()=>login(email,password)}
+            onPress={()=>{login(email,password);handleNormalLogin()}}
             />
 
             <TouchableOpacity style={styles.forgotButton} onPress={()=>{}}>
@@ -84,7 +93,7 @@ export default function Login({navigation}){
             color="#de4d41"
             backgroundColor="#f5e7ea"
             
-            onPress={()=>{ promptAsync()}}
+            onPress={()=>{ promptAsync();handleGoogleLogin()}}
             />
 
             <TouchableOpacity style={styles.forgotButton} onPress={()=>{navigation.navigate('SignUp')}}>

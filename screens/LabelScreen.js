@@ -1,70 +1,74 @@
 import React from 'react'
-import { View, Text ,StyleSheet,Button} from 'react-native'
+import { View, Text ,StyleSheet,Button,Image} from 'react-native'
+import { Divider } from 'react-native-elements';
 
 import { windowHeight, windowWidth } from "../utils/Dimensions"
 
 const data=require('../assets/products.json')
 export default function LabelScreen() {
     return (
-        <View>
+        <View style={styles.container}>
 
-            <View>
+            <View style={styles.title}>
             <Text>ENERGY LABEL BELOW {}</Text> 
             </View>
+           
 
-            <View
-            style={{
-                borderBottomColor: 'black',
-                borderBottomWidth: 1,
-            }}
-            />
+                <Divider style={{backgroundColor:'black'}}/>
 
             <View style={styles.ratingPart}>
+              {/* <View> */}
+              <Image source={require('../assets/ratings.png')} style={{flex: 1,width:"70%",resizeMode: 'contain'}} />
+            {/* </View>   */}
 
+            {/* <View style={styles.arrow}>
+
+            </View> */}
+          
             </View>
             
 
             {/* <Text style={styles.text}>Energy Efficiency Index {data.details.energyEfficiencyIndex}</Text> */}
 
-            <View
-            style={{
-                borderBottomColor: 'black',
-                borderBottomWidth: 1,
-            }}
-            />
+            
+
+            <Divider style={{backgroundColor:'black'}} />
 
             <View style={styles.energyConsumption}>
-            <Text>Energy consumption {data.details.energyCons}</Text>
-            </View>
-
-
-            <View
-            style={{
-                borderBottomColor: 'black',
-                borderBottomWidth: 1,
-            }}
-            />
-
-            <View>
-            <Text>Rated Capacity {data.details.ratedCapacity}</Text>
+            <Text style={styles.energyconsText}>{data.details.energyCons}</Text>
+            <Image source={require('../assets/energycons.png')} style={{height:"190%",width:"30%",resizeMode:"contain"}}></Image>
             </View>
             
+            <Divider style={{backgroundColor:'black'}} />
+
+            <View style={styles.first}>
             
-            <View>
-            <Text> Water consumption per cycle (in L) {data.details.waterCons}</Text>
+            <View style={styles.ratedcap}>
+                <Image source={require('../assets/ratedcap.png')} style={{height: "35%",width:"60%",resizeMode:"contain"}}></Image>
+                <Text style={styles.ratedText}>{data.details.ratedCapacity}</Text>
+            </View> 
+
+            <View style={styles.duration}>
+                <Image source={require('../assets/duration.png')} style={{height:"35%",width:"60%",resizeMode:"contain"}}></Image>
+                <Text style={styles.durationText}>{data.details.programmeDurationHalf}</Text>
             </View>
 
-            <View>
-            <Text>Spin class '{data.details.spinClass}' </Text>
+            <View style={styles.watercons}>
+                <Image source={require('../assets/watercons.png')} style={{height:"35%",width:"60%",resizeMode:"contain"}}></Image>
+                <Text style={styles.waterText}>{data.details.waterCons}</Text>
             </View>
-            
+            </View>
 
-            <View>
-            <Text>Airbone Noise Emissions {data.details.noise}</Text>
+            <View style={styles.second}>
+            <View style={styles.spin}>
+                <Text>Spin class '{data.details.spinClass}' </Text>
+            </View>
+
+            <View style={styles.noise}>
+                 <Text>Airbone Noise Emissions {data.details.noise}</Text>
             </View>
             
-            
-            
+            </View> 
         </View>
     )
 }
@@ -72,11 +76,15 @@ export default function LabelScreen() {
 
 const styles = StyleSheet.create({
     container:{
-        backgroundColor:'#f9fafd',
+        backgroundColor:'white',
         flex:1,
-        justifyContent:'center',
+        
+    },
+    title:{
+        padding:20,
+        marginTop:20,
         alignItems:'center',
-        padding:20
+        
     },
     text:{
         fontSize:20,
@@ -85,12 +93,55 @@ const styles = StyleSheet.create({
     },
     energyConsumption:{
         alignItems:'center',
-        justifyContent:'center'
+        justifyContent:'center',
+        marginTop:15,
+        marginBottom:15,
+        flexDirection:'row'
+    },
+    ratingPart:{
+        height:windowHeight/2,
+        // flexDirection:'row'
+    },
+    ratings:{
+        // backgroundColor:'black',
         
     },
-
-    ratingPart:{
-        height:windowHeight/2
-    }
-
+    first:{
+        flexDirection: 'row',
+        margin:10,
+    },
+    second:{
+        flexDirection:'row',
+        justifyContent:'center',
+        alignItems:'center',
+        backgroundColor: 'black',
+    },
+    ratedcap:{
+        width:windowWidth/3,
+    },
+    duration:{
+        width:windowWidth/3,
+    },
+    watercons:{
+        width:windowWidth/3,
+    },
+    noise:{
+        width:windowWidth/2,
+    },
+    spin:{
+        padding:20,
+        width:windowWidth/2,
+    },
+    energyconsText:{
+        fontSize:18,
+    },
+    ratedText:{
+        fontSize:18,
+    },
+    durationText:{
+        fontSize:18,
+    },
+    waterText:{
+        fontSize:18,
+    },
 })

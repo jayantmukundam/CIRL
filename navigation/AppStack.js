@@ -10,6 +10,7 @@ import HomeScreen from '../screens/HomeScreen'
 import ProfileScreen from '../screens/ProfileScreen'
 import BarCodeScreen from '../screens/BarCodeScreen'
 import LabelScreen from '../screens/LabelScreen'
+import EditProfileScreen from '../screens/EditProfileScreen'
 
 
 const Stack = createStackNavigator()
@@ -53,6 +54,23 @@ const HomeStack = ({navigation}) => (
         component={ProfileScreen}
         options={{
           headerShown: false,
+        }}
+       
+        
+      />
+
+      <Stack.Screen
+        name="EditProfile"
+        component={EditProfileScreen}
+        options={{
+          headerTitle: 'Edit Profile',
+          headerBackTitleVisible: false,
+          headerTitleAlign: 'center',
+          headerStyle: {
+            backgroundColor: '#fff',
+            shadowColor: '#fff',
+            elevation: 0,
+          },
         }}
        
         

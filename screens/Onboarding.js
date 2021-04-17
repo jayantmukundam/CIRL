@@ -1,6 +1,7 @@
 import React from 'react';
-import { Button, StyleSheet, Text, View} from 'react-native';
+import { Button, StyleSheet, Text, View,Image} from 'react-native';
 import Onboarding from 'react-native-onboarding-swiper';
+import ImageBackground from 'react-native/Libraries/Image/ImageBackground';
 export default function OnboardingScreen({navigation}){
     return(
         <Onboarding
@@ -8,30 +9,64 @@ export default function OnboardingScreen({navigation}){
         onDone={()=>navigation.replace("Login")}
   pages={[
     {
-      backgroundColor: '#a6e4d0',
+      backgroundColor: '#38334f',
       titleStyles:{
         fontFamily: 'ubuntu-bold',
       },
-      subTitleStyles:{
+      titleStyles:{
         fontFamily:'ubuntu',
+        fontSize:30,
       },
-    //   image: <Image source={require('./images/circle.png')} />,
-      title: 'Onboarding 1',
-      subtitle: 'Done with React Native Onboarding Swiper',
+      image: <Image 
+      source={require('../assets/images/Logo2.png')} 
+      style={styles.image}
+      />,
+      title: 'Press Next for Tutorial',
+      
     },
-    
+
     {
-        backgroundColor: '#fdeb93',
-        titleStyles:{
-          fontFamily: 'ubuntu-bold',
-        },
-        subTitleStyles:{
-          fontFamily:'ubuntu',
-        },
-      //   image: <Image source={require('./images/circle.png')} />,
-        title: 'Onboarding 2',
-        subtitle: 'Done with React Native Onboarding Swiper',
+     
+      backgroundColor: '#38334f',
+      titleStyles:{
+        fontFamily: 'ubuntu-bold',
+        fontSize:40,
       },
+      subTitleStyles:{
+        fontFamily:'ubuntu-bold',
+        fontSize:30,
+      },
+      image: <Image 
+      source={require('../assets/images/barcode.jpg')} 
+      style={{width:300 ,height:300,}}
+      />,
+      title: 'STEP 1',
+      subtitle: '->Press Tap to Scan\n->Now Scan the Barcode',
+      
+      
+    },
+    {
+     
+     backgroundColor: '#38334f',
+     titleStyles:{
+       fontFamily: 'ubuntu-bold',
+       fontSize:40,
+     },
+     subTitleStyles:{
+       fontFamily:'ubuntu-bold',
+       fontSize:30,
+     },
+     image: <Image 
+     source={require('../assets/images/readlabel.png')} 
+     style={{width:300 ,height:300,}}
+     />,
+     title: 'STEP 2',
+     subtitle: '->You will be Redirected to Label Page\n->Read our CIRL',
+     
+     
+   },
+    
+   
   ]}
 />
     )
@@ -42,5 +77,10 @@ const styles = StyleSheet.create({
         flex:1,
         alignItems:'center',
         justifyContent:'center'
-    }
+      },
+      image:{
+        backgroundColor:'#d5cff3',
+        width:'80%',
+        height:'80%',
+         }
 })

@@ -46,11 +46,13 @@ export default function LabelScreen() {
             <Divider style={{backgroundColor:'black'}} />
 
             <View style={styles.energyConsumption}>
+
                 <Text style={styles.energyconsText}>{data.details.energyConsPerCycle}</Text>
                 <Image source={require('../assets/energycons.png')} style={{height:"190%",width:"30%",resizeMode:"contain"}}/>
             </View>
             
             <Divider style={{backgroundColor:'black'}} />
+
 
             <View style={{}}>
 
@@ -116,6 +118,7 @@ const styles = StyleSheet.create({
         justifyContent:'center',
         marginTop:15,
         marginBottom:15,
+
         flexDirection:'row',
         // backgroundColor:'black'
         
@@ -146,6 +149,7 @@ const styles = StyleSheet.create({
         flexDirection:'row',
         justifyContent:'center',
         alignItems:'center',
+
         height:windowHeight/8,
         //backgroundColor: 'black',
     },
@@ -194,6 +198,7 @@ const styles = StyleSheet.create({
     },
     ratedText:{
         fontSize:18,
+
         marginLeft:10
     },
     durationText:{

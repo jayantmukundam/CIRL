@@ -14,7 +14,7 @@ export default function LabelScreen() {
         <View style={styles.container}>
 
             <View style={styles.title}>
-                <Text>ENERGY LABEL BELOW {}</Text> 
+                <Text style={{fontWeight:'bold'}}>CIRL</Text> 
             </View>
            
 
@@ -26,10 +26,10 @@ export default function LabelScreen() {
                             <Image source={require('../assets/ratings.png')} style={{width:"100%",height:"100%",resizeMode:'contain'}} />
                     </View>  
 
-                    <View style={{width:windowWidth/3,height:"100%"}}>
-                        <View style={{marginTop:60}}></View>
-                         <Image source={require('../assets/arrowB.png')} style={{width:"70%",resizeMode: 'contain'}} />
-
+                    <View style={{width:windowWidth/3,height:"100%",marginTop:10,padding:10}}>
+                        {/* <View style={{marginTop:60}}></View>
+                         <Image source={require('../assets/arrowB.png')} style={{width:"70%",resizeMode: 'contain'}} /> */}
+                        <Text style={styles.ratings}>B</Text>
                          {/* <Image source={require('../assets/arrowB.png')} style={{width:"70%",resizeMode: 'contain',marginTop:50}} /> */}
                     
                     </View> 
@@ -46,7 +46,7 @@ export default function LabelScreen() {
             <Divider style={{backgroundColor:'black'}} />
 
             <View style={styles.energyConsumption}>
-                <Text style={styles.energyconsText}>{data.details.energyCons}</Text>
+                <Text style={styles.energyconsText}>{data.details.energyConsPerCycle}</Text>
                 <Image source={require('../assets/energycons.png')} style={{height:"190%",width:"30%",resizeMode:"contain"}}/>
             </View>
             
@@ -59,7 +59,7 @@ export default function LabelScreen() {
                     <View style={styles.first}>
                     
                             <View style={styles.ratedcap}>
-                                <Image source={require('../assets/ratedcap.png')} style={{height: "70%",width:"50%",resizeMode:"contain"}}></Image>
+                                <Image source={require('../assets/ratedcap.png')} style={{height:"70%",width:"50%",resizeMode:"contain"}}></Image>
                                 <Text style={styles.ratedText}>{data.details.ratedCapacity}</Text>
                             </View> 
 
@@ -76,13 +76,13 @@ export default function LabelScreen() {
 
                     <View style={styles.second}>
                         <View style={styles.spin}>
-                        <Image source={require('../assets/spin.png')} style={{height:"80%",width:"50%",resizeMode:"contain",marginLeft:20}}></Image>
-                            <Text>Spin class '{data.details.spinClass}' </Text>
+                            <Image source={require('../assets/spin.png')} style={{height:"80%",width:"50%",resizeMode:"contain",marginLeft:20}}></Image>
+                            <Text style={styles.spintext}>'{data.details.spinClass}'</Text>
                         </View>
 
                         <View style={styles.noise}>
-                        <Image source={require('../assets/noise.png')} style={{height:"50%",width:"50%",resizeMode:"contain",marginLeft:20}}></Image>
-                            <Text>Airbone Noise Emissions {data.details.noise}</Text>
+                            <Image source={require('../assets/noise.png')} style={{height:"50%",width:"50%",resizeMode:"contain",marginLeft:20}}></Image>
+                            <Text style={styles.noisetext}>{data.details.noise}</Text>
                         </View>
                     
                     </View> 
@@ -118,6 +118,7 @@ const styles = StyleSheet.create({
         marginBottom:15,
         flexDirection:'row',
         // backgroundColor:'black'
+        
     },
     ratingPart:{
         height:windowHeight/2,
@@ -126,13 +127,18 @@ const styles = StyleSheet.create({
          flexDirection:'row'
     },
     ratings:{
-        // backgroundColor:'black',
-        
+        //backgroundColor:'black',
+        fontSize:60,
+        textAlign:'center',
+        marginLeft:30,
+        borderRadius:20,
+        borderWidth:3, 
+        borderColor:'aqua',
     },
     first:{
         flexDirection: 'row',
         margin:10,
-        // backgroundColor:'red',
+        //backgroundColor:'red',
         height:windowHeight/8
         
     },
@@ -141,24 +147,47 @@ const styles = StyleSheet.create({
         justifyContent:'center',
         alignItems:'center',
         height:windowHeight/8,
-        //  backgroundColor: 'black',
+        //backgroundColor: 'black',
     },
     ratedcap:{
         width:windowWidth/3,
-        
+        // borderRadius:20,
+        // borderWidth:3, 
+        // borderColor:'aqua',  
+        // padding:2,
+        //backgroundColor: 'black',
+        marginRight:3,
     },
     duration:{
         width:windowWidth/3,
+        // borderRadius:20,
+        // borderWidth:3, 
+        // borderColor:'aqua',
+        // padding:2,
+        marginRight:3,  
     },
     watercons:{
         width:windowWidth/3,
+        // borderRadius:20,
+        // borderWidth:3, 
+        // borderColor:'aqua',
+        // padding:2,
     },
     noise:{
         width:windowWidth/2,
+        // borderRadius:20,
+        // borderWidth:3, 
+        // borderColor:'aqua',
+        // padding:2,
+        marginLeft:10,
     },
     spin:{
         padding:20,
         width:windowWidth/2,
+        // borderRadius:20,
+        // borderWidth:3, 
+        // borderColor:'aqua',
+        // padding:2,
     },
     energyconsText:{
         fontSize:18,
@@ -176,5 +205,15 @@ const styles = StyleSheet.create({
         fontSize:18,
         marginTop:10,
         marginLeft:20
+    },
+    spintext:{
+        fontSize:18,
+        marginTop:10,
+        marginLeft:50   
+    },
+    noisetext:{
+        fontSize:18,
+        marginTop:10,
+        marginLeft:40   
     },
 })

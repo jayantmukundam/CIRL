@@ -7,7 +7,6 @@ import { windowHeight, windowWidth } from "../utils/Dimensions"
 const data=require('../assets/products.json')
 export default function LabelScreen() {
 
-    const margin=10
     return (
 
         
@@ -61,29 +60,29 @@ export default function LabelScreen() {
                     <View style={styles.first}>
                     
                             <View style={styles.ratedcap}>
-                                <Image source={require('../assets/ratedcap.png')} style={{height:"70%",width:"50%",resizeMode:"contain"}}></Image>
+                                <Image source={require('../assets/ratedcap.png')} style={{height:windowHeight/15,width:windowWidth/6,resizeMode:"contain"}}></Image>
                                 <Text style={styles.ratedText}>{data.details.ratedCapacity}</Text>
                             </View> 
 
                             <View style={styles.duration}>
-                                <Image source={require('../assets/duration.png')} style={{height:"60%",width:"50%",resizeMode:"contain"}}></Image>
+                                <Image source={require('../assets/duration.png')} style={{height:windowHeight/15,width:windowWidth/6,resizeMode:"contain"}}></Image>
                                 <Text style={styles.durationText}>{data.details.programmeDurationHalf}</Text>
                             </View>
 
                             <View style={styles.watercons}>
-                                <Image source={require('../assets/watercons.png')} style={{height:"60%",width:"50%",resizeMode:"contain"}}></Image>
+                                <Image source={require('../assets/watercons.png')} style={{height:windowHeight/15,width:windowWidth/6,resizeMode:"contain"}}></Image>
                                 <Text style={styles.waterText}>{data.details.waterCons}</Text>
                             </View>
                     </View>
 
                     <View style={styles.second}>
                         <View style={styles.spin}>
-                            <Image source={require('../assets/spin.png')} style={{height:"80%",width:"50%",resizeMode:"contain",marginLeft:20}}></Image>
+                            <Image source={require('../assets/spin.png')} style={{height:windowHeight/15,width:windowWidth/6,resizeMode:"contain",marginLeft:20}}></Image>
                             <Text style={styles.spintext}>'{data.details.spinClass}'</Text>
                         </View>
 
                         <View style={styles.noise}>
-                            <Image source={require('../assets/noise.png')} style={{height:"50%",width:"50%",resizeMode:"contain",marginLeft:20}}></Image>
+                            <Image source={require('../assets/noise.png')} style={{height:windowHeight/15,width:windowWidth/6,resizeMode:"contain",marginLeft:20}}></Image>
                             <Text style={styles.noisetext}>{data.details.noise}</Text>
                         </View>
                     

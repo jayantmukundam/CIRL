@@ -11,7 +11,7 @@ if (firebase.apps.length === 0) {
 
 export default function App() {
     const [fontsLoaded] = useFonts({
-        ubuntu: require("./assets/fonts/Ubuntu-Regular.ttf"),
+        "ubuntu": require("./assets/fonts/Ubuntu-Regular.ttf"),
         "ubuntu-bold": require("./assets/fonts/Ubuntu-Bold.ttf"),
     })
 

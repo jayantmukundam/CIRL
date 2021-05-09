@@ -7,7 +7,7 @@ import { Divider } from 'react-native-elements';
 import { windowHeight, windowWidth } from "../utils/Dimensions"
 
 const data=require('../assets/products.json')
-export default function LabelScreen() {
+export default function WashingMachineLabelScreen() {
 
     return (
 
@@ -19,7 +19,7 @@ export default function LabelScreen() {
         
 
             <View style={styles.title}>
-                <Text style={{fontWeight:'bold'}}>CIRL</Text> 
+                <Text style={{fontFamily:'ubuntu-bold'}}>WASHING MACHINE</Text> 
             </View>
            
 

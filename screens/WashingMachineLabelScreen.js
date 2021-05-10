@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react';
 import { View, Text ,StyleSheet,Button,Image,ScrollView} from 'react-native'
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
@@ -7,9 +7,25 @@ import { Divider } from 'react-native-elements';
 import { windowHeight, windowWidth } from "../utils/Dimensions"
 
 const data=require('../assets/products.json')
+
+
+
+
 export default function WashingMachineLabelScreen() {
 
+    const [newdata, setNewData] = useState([]);
+
+useEffect(() => {
+    fetch('http://cirl-api.herokuapp.com/api/product/8901072002478')
+      .then((response) => response.json())
+      .then((json) => setNewData(json))
+      .catch((error) => console.error(error))
+      
+  }, []);
+
     return (
+
+        
 
         <View style={styles.container}>
 
@@ -24,6 +40,9 @@ export default function WashingMachineLabelScreen() {
            
 
             <Divider style={{backgroundColor:'black'}}/>
+
+
+            {/* <View style={{backgroundColor:'red'}}><Text>{newdata.barcodeId}</Text></View> */}
 
 
             <View style={styles.ratingPart}>

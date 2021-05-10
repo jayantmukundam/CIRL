@@ -11,7 +11,7 @@ import ProfileScreen from '../screens/ProfileScreen'
 import BarCodeScreen from '../screens/BarCodeScreen'
 import WashingMachineLabelScreen from '../screens/WashingMachineLabelScreen'
 import EditProfileScreen from '../screens/EditProfileScreen'
-import FridgeLabelScreen from '../screens/FridgeLabelScreen'
+import LabelScreen from '../screens/LabelScreen'
 
 
 const Stack = createStackNavigator()
@@ -36,17 +36,17 @@ const HomeStack = ({navigation}) => (
           }}
       />
 
-    <Stack.Screen
+    {/* <Stack.Screen
         name="ViewWashingMachineLabel"
         component={WashingMachineLabelScreen}
         options={{
             headerShown: false,
           }}
-      />
+      /> */}
 
 <Stack.Screen
-        name="ViewFridgeLabel"
-        component={FridgeLabelScreen}
+        name="ViewLabel"
+        component={LabelScreen}
         options={{
             headerShown: false,
           }}

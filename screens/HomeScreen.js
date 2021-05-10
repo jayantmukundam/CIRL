@@ -95,7 +95,9 @@ export default function HomeScreen({navigation}) {
             
             <FormButton
                 buttonTitle="Tap to Scan"
-                onPress={() => navigation.navigate("BarCode")}
+                onPress={() => navigation.navigate('BarCode', {
+                    otherParam: '',
+                  })}
             />
         </View>
     )

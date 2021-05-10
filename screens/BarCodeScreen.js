@@ -19,6 +19,10 @@ export default function BarCodeScreen({ route,navigation }) {
     const handleBarCodeScanned = ({ type, data }) => {
         setScanned(true)
         alert(`Bar code with type ${type} and data ${data} has been scanned!`)
+        // navigateToLabel()
+        navigation.navigate('ViewLabel', {
+          barCode: data,
+        });
     }
 
     if (hasPermission === null) {
@@ -28,23 +32,7 @@ export default function BarCodeScreen({ route,navigation }) {
         return <Text>No access to camera</Text>
     }
 
-    const navigateToLabel=()=>{
-
-        // return(
-            if(otherParam=='washing machine'){
-                navigation.navigate('ViewWashingMachineLabel')
-            }
-            else if(otherParam=='fridge'){
-                navigation.navigate('ViewFridgeLabel')
-            }
-            else{
-                return(
-                    <Text>{otherParam}</Text>
-                )
-            }
-        
-        // )
-    }
+    
 
     return (
         <View
@@ -53,24 +41,29 @@ export default function BarCodeScreen({ route,navigation }) {
         flexDirection: 'column',
         justifyContent: 'flex-end',
       }}>
+
+    
             <BarCodeScanner
         onBarCodeScanned={scanned ? undefined : handleBarCodeScanned}
         style={[StyleSheet.absoluteFillObject, styles.container]}>
         <Text style={styles.description}>Scan your Bar Code</Text>
-        {/* <Image
-          style={styles.qr}
-          source={{
-            uri: 'https://facebook.github.io/react-native/img/tiny_logo.png',
-          }}
-        /> */}
+
+
         <View style={styles.qr}>
 
         </View>
         
+        
+
+        
+        
       </BarCodeScanner>
             
             {/* {scanned && navigation.navigate("ViewLabel")} */}
-            {scanned && navigateToLabel()}
+            {/* {scanned && navigateToLabel()} */}
+            
+
+            
         </View>
     )
 }

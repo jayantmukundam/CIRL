@@ -21,6 +21,8 @@ export default function LabelScreen({ route,navigation }) {
           .catch((error) => console.error(error))
           
       }, []);
+
+      
     return (
         <View>
             
@@ -32,7 +34,7 @@ export default function LabelScreen({ route,navigation }) {
             </View>
 
             <View style={styles.title}>
-                <Text style={{fontFamily:'ubuntu-bold'}}>PRODUCT : {data.productGroup.toUpperCase()}</Text> 
+                <Text style={{fontFamily:'ubuntu-bold'}}>PRODUCT : {data.productGroup}</Text> 
             </View>
         
             

@@ -9,7 +9,7 @@ import { createMaterialBottomTabNavigator } from '@react-navigation/material-bot
 import HomeScreen from '../screens/HomeScreen'
 import ProfileScreen from '../screens/ProfileScreen'
 import BarCodeScreen from '../screens/BarCodeScreen'
-import WashingMachineLabelScreen from '../screens/WashingMachineLabelScreen'
+import WashingMachineListScreen from '../screens/WashingMachineListScreen'
 import EditProfileScreen from '../screens/EditProfileScreen'
 import LabelScreen from '../screens/LabelScreen'
 
@@ -36,13 +36,13 @@ const HomeStack = ({navigation}) => (
           }}
       />
 
-    {/* <Stack.Screen
-        name="ViewWashingMachineLabel"
-        component={WashingMachineLabelScreen}
+    <Stack.Screen
+        name="ViewWashingMachineList"
+        component={WashingMachineListScreen}
         options={{
             headerShown: false,
           }}
-      /> */}
+      />
 
 <Stack.Screen
         name="ViewLabel"

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Text, View, StyleSheet, Button } from "react-native"
 import { Rating } from 'react-native-elements';
 import { Ionicons } from '@expo/vector-icons';
-
+import { windowHeight, windowWidth } from "../utils/Dimensions"
 
 
 
@@ -35,6 +35,7 @@ export default function LabelScreen({ route,navigation }) {
 
             <View style={styles.title}>
                 <Text style={{fontFamily:'ubuntu-bold'}}>PRODUCT : {data.productGroup}</Text> 
+                
             </View>
         
             
@@ -170,12 +171,12 @@ const styles = StyleSheet.create({
     },
     heading:{
         flexDirection:'row',
-        margin:10,
-        paddingTop:30
+        margin:windowHeight/100,
+        paddingTop:windowHeight/50
     },
     headingText:{
         fontFamily:'ubuntu-bold',
-        fontSize:40
+        fontSize:windowHeight/20,
     },
     overallText:{
         fontFamily:'ubuntu-bold',

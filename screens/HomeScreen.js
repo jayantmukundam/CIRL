@@ -23,7 +23,7 @@ export default function HomeScreen({navigation}) {
             <TouchableOpacity
                  onPress={() => {
                     
-                    navigation.navigate('BarCode', {
+                    navigation.navigate('ViewWashingMachineList', {
                       otherParam: 'washing machine',
                     });
                   }}
@@ -31,6 +31,8 @@ export default function HomeScreen({navigation}) {
                  <MaterialCommunityIcons name="washing-machine" size={50} color="black" />
                     <Text style={styles.text}>Washing Machine</Text>
                 </TouchableOpacity>
+
+
 
                 <TouchableOpacity
                  onPress={() => {

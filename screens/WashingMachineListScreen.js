@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text ,StyleSheet,Button,Image,SafeAreaView,FlatList,TouchableOpacity} from 'react-native'
+import { View, Text ,StyleSheet,Button,Image,SafeAreaView,FlatList,TouchableOpacity, useWindowDimensions} from 'react-native'
 
 import { Divider } from 'react-native-elements';
 import { Rating } from 'react-native-elements';
@@ -8,13 +8,9 @@ import { windowHeight, windowWidth } from "../utils/Dimensions"
 
 
 
-
-
-
-
-
 export default function WashingMachineListScreen({ route,navigation }) {
 
+    //const {product} = route.params;
     const [lists, setList] = useState([]);
     
 
@@ -26,6 +22,8 @@ useEffect(() => {
       
   }, []);
 
+  
+
 
   const Item = ({ item }) => (
     <TouchableOpacity onPress={() => {
@@ -34,22 +32,33 @@ useEffect(() => {
             barCode: item.barcodeId,
           });
       }} style={styles.item}>
+          <View
+                style={{
+                    borderBottomColor: 'black',
+                    borderBottomWidth: 1,
+
+                    
+                }}
+            />
           <View style={{flexDirection:'row'}}>
-          <Text style={styles.title}>{item.brand}</Text>
+            <View style={{flexDirection:'column',marginTop:2}}>
+              <Text style={styles.brand}>{item.brand}</Text>
+              <Text style={styles.model}>{item.modelIdentifier}</Text>
+              </View>
+              
           <Rating
                 type='custom'
-
-                ratingColor='black'
-
-                ratingBackgroundColor='#c8c7c8'
+                ratingColor='red'
+                ratingBackgroundColor='black'
                 ratingCount={5}
-                imageSize={30}
+                imageSize={27}
                 defaultRating={5}
                 // onFinishRating={ratingCompleted}
-                 style={{ paddingVertical: 30, alignItems:'center'}}
+                style={{paddingHorizontal:100,marginTop:15}}
                 readonly={true}
                 startingValue={item.overall_rating}
                 />
+          
           </View>
       
       
@@ -57,22 +66,17 @@ useEffect(() => {
   );
 
 
-
-
     return (
        <SafeAreaView style={styles.container}>
-      <FlatList
-        data={lists}
-        renderItem={({item})=>(
-            <Item item={item}/>
-          )}
-        keyExtractor={(item) => item._id}
-        
-      />
+         <FlatList
+           data={lists}
+           renderItem={({item})=>(
+             <Item item={item}/>
+            )}
+          keyExtractor={(item) => item._id}
+        />
     </SafeAreaView>
-     
-     
-
+    
     )
 
 }
@@ -81,15 +85,26 @@ useEffect(() => {
 const styles = StyleSheet.create({
     container: {
       flex: 1,
-      marginTop: 10,
+      marginTop:1, 
     },
+    // title:{
+    //   padding:5,
+    //   marginTop:40,
+    //   alignItems:'center',
+    //   backgroundColor:'lightgreen',
+    // },
     item: {
-     margin:20,
-      
+     margin:20,  
     },
-    title: {
-      fontSize: 32,
+    brand: {
+      marginTop:20,
+      fontSize: 20,
       fontFamily:'ubuntu',
-      margin:20
+      //backgroundColor:'red' 
     },
+    model:{
+      fontSize:18,
+      width:windowWidth/3,
+      //backgroundColor:'pink'
+    }
   });

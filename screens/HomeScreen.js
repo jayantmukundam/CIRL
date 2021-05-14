@@ -6,6 +6,7 @@ import { AuthContext } from '../navigation/AuthProvider'
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import "firebase/firestore";
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
+import { windowHeight } from '../utils/Dimensions'
 
 
 export default function HomeScreen({navigation}) {
@@ -16,15 +17,15 @@ export default function HomeScreen({navigation}) {
         // </View>
         <View>
             <View style={styles.title}>
-                <Text style={{fontFamily:'ubuntu-bold'}}>HOME SCREEN</Text> 
+                <Text style={{fontFamily:'ubuntu-bold',fontSize:40,color:'green'}}>CIRL</Text> 
             </View>
 
             <View style={styles.firstRow}>
             <TouchableOpacity
                  onPress={() => {
                     
-                    navigation.navigate('ViewWashingMachineList', {
-                      otherParam: 'washing machine',
+                    navigation.navigate('ViewWashingMachineList',{
+                      product: 'washing machine',
                     });
                   }}
                  style={{width:wp('30%')}}>                    
@@ -86,24 +87,28 @@ export default function HomeScreen({navigation}) {
                     <MaterialCommunityIcons name="television" size={50} color="black" />
                     <Text style={styles.text}>Television</Text>
                 </TouchableOpacity>
+                <TouchableOpacity
+                 onPress={() => {
+                    
+                    navigation.navigate('BarCode', {
+                      otherParam: 'television',
+                    });
+                  }}
+                 style={{width:wp('30%')}}> 
+                    <MaterialCommunityIcons name="fan" size={50} color="black" />
+                    <Text style={styles.text}>Ceiling Fans</Text>
+                </TouchableOpacity>
             </View>
-            
-
-            
-            <View style={styles.thirdRow}>
-            
-            </View>
-            
-            
             <FormButton
-                buttonTitle="Tap to Scan"
+                buttonTitle="Tap to Scan!"
                 onPress={() => navigation.navigate('BarCode', {
                     otherParam: '',
                   })}
             />
-        </View>
+          </View>
     )
 }
+
 
 const styles = StyleSheet.create({
     container: {
@@ -111,18 +116,20 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: "center",
         alignItems: "center",
-        padding: 20,
-        
+        padding: 20,  
     },
     title:{
-        padding:20,
-        marginTop:20,
+        padding:5,
+        marginTop:40,
         alignItems:'center',
+        backgroundColor:'lightgreen',
+        
         
     },
     text: {
         fontFamily:'ubuntu',
         margin:10,
+        fontSize:18
     },
     firstRow:{
         margin:30,

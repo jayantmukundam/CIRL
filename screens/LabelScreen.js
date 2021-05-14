@@ -28,14 +28,14 @@ export default function LabelScreen({ route,navigation }) {
             
 
 
-            <View style={styles.heading}>
-                <Ionicons name="earth" size={70} color="black" style={{margin:5}} />
-                <Text style={styles.headingText}>Environmental Friendliness*</Text>
-            </View>
+            {/* <View style={styles.heading}>
+                <Text style={styles.headingText}>CIRL</Text>
+            </View> */}
 
             <View style={styles.title}>
-                <Text style={{fontFamily:'ubuntu-bold'}}>PRODUCT : {data.productGroup}</Text> 
-                
+                <Text style={{fontFamily:'ubuntu-bold',fontSize:17,marginTop:windowHeight/15,color:'green'}}>Brand: {data.brand}</Text>
+                <Text style={{fontFamily:'ubuntu-bold',fontSize:17,marginTop:15,color:'green'}}>Model: {data.modelIdentifier}</Text>
+                <Text style={{fontFamily:'ubuntu-bold',fontSize:17,marginTop:15,color:'green'}}>Product: {data.productGroup}</Text>
             </View>
         
             
@@ -44,12 +44,10 @@ export default function LabelScreen({ route,navigation }) {
                 <Text style={styles.overallText}>Overall</Text>
                 <Rating
                 type='custom'
-
-                ratingColor='black'
-
-                ratingBackgroundColor='#c8c7c8'
+                ratingColor='red'
+                ratingBackgroundColor='black'
                 ratingCount={5}
-                imageSize={40}
+                imageSize={35}
                 defaultRating={5}
                 // onFinishRating={ratingCompleted}
                 style={{ paddingVertical: 10 }}
@@ -71,9 +69,8 @@ export default function LabelScreen({ route,navigation }) {
                 <Rating
                 type='custom'
 
-                ratingColor='black'
-
-                ratingBackgroundColor='#c8c7c8'
+                ratingColor='red'
+                ratingBackgroundColor='black'
                 ratingCount={5}
                 imageSize={30}
                 defaultRating={5}
@@ -91,9 +88,8 @@ export default function LabelScreen({ route,navigation }) {
                 <Rating
                 type='custom'
 
-                ratingColor='black'
-
-                ratingBackgroundColor='#c8c7c8'
+                ratingColor='red'
+                ratingBackgroundColor='black'
                 ratingCount={5}
                 imageSize={30}
                 defaultRating={5}
@@ -110,9 +106,8 @@ export default function LabelScreen({ route,navigation }) {
                 <Rating
                 type='custom'
 
-                ratingColor='black'
-
-                ratingBackgroundColor='#c8c7c8'
+                ratingColor='red'
+                ratingBackgroundColor='black'
                 ratingCount={5}
                 imageSize={30}
                 // defaultRating={5}
@@ -129,9 +124,8 @@ export default function LabelScreen({ route,navigation }) {
                 <Rating
                 type='custom'
 
-                ratingColor='black'
-
-                ratingBackgroundColor='#c8c7c8'
+                ratingColor='red'
+                ratingBackgroundColor='black'
                 ratingCount={5}
                 imageSize={30}
                 defaultRating={5}
@@ -153,9 +147,9 @@ export default function LabelScreen({ route,navigation }) {
                 <Text style={styles.footerText}>
                     More stars are better.
                     </Text>
-                <Text style={styles.footerText}>
+                {/* <Text style={styles.footerText}>
                     *Compared to similar products.
-                </Text>
+                </Text> */}
             </View>
 
 </View>
@@ -166,7 +160,7 @@ const styles = StyleSheet.create({
     title:{
         // padding:20,
         margin:10,
-        alignItems:'center',
+        justifyContent:'flex-start',
         
     },
     heading:{
@@ -177,39 +171,45 @@ const styles = StyleSheet.create({
     headingText:{
         fontFamily:'ubuntu-bold',
         fontSize:windowHeight/20,
+        marginTop:20,
+        paddingHorizontal:150,
+        color:'green'
     },
     overallText:{
         fontFamily:'ubuntu-bold',
-        fontSize:30,
-        margin:10
+        fontSize:40,
+        margin:10,
+        color:'black'
     },
     
     materialsText:{
         fontFamily:'ubuntu-bold',
-        fontSize:15,
-        marginLeft:50,
+        fontSize:20,
         marginRight:70,
+        marginLeft:30
         
     },
     productionText:{
         fontFamily:'ubuntu-bold',
-        fontSize:15,
-        marginLeft:50,
+        fontSize:20,
         marginRight:60,
+        marginLeft:30
         
     },
     impactText:{
         fontFamily:'ubuntu-bold',
-        fontSize:15,
-        marginLeft:50,
+        fontSize:20,
         marginRight:40,
+        marginLeft:30
+
         
     },
     recycleText:{
         fontFamily:'ubuntu-bold',
-        fontSize:15,
-        marginLeft:50,
+        fontSize:20,
         marginRight:10,
+        marginLeft:30
+        
         
     },
     overallRating:{
@@ -221,13 +221,14 @@ const styles = StyleSheet.create({
     rating:{
         flexDirection:'row',
         alignItems:'center',
-        margin:20
+        margin:20,
+        // marginRight:10,
+        // paddingHorizontal:30
         
     },
     footerText:{
         fontFamily:'ubuntu-bold',
-        fontSize:20
+        fontSize:20,
     }
-
     
 })

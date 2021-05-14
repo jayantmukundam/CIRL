@@ -33,9 +33,10 @@ export default function LabelScreen({ route,navigation }) {
             </View> */}
 
             <View style={styles.title}>
-                <Text style={{fontFamily:'ubuntu-bold',fontSize:17,marginTop:windowHeight/15,color:'green'}}>Brand: {data.brand}</Text>
-                <Text style={{fontFamily:'ubuntu-bold',fontSize:17,marginTop:15,color:'green'}}>Model: {data.modelIdentifier}</Text>
-                <Text style={{fontFamily:'ubuntu-bold',fontSize:17,marginTop:15,color:'green'}}>Product: {data.productGroup}</Text>
+                <Text style={{fontFamily:'ubuntu-bold',fontSize:17,marginTop:windowHeight/15,color:'green'}}>PRODUCT: {data.productGroup}</Text>
+                <Text style={{fontFamily:'ubuntu-bold',fontSize:17,marginTop:15,color:'green'}}>BRAND: {data.brand}</Text>
+                <Text style={{fontFamily:'ubuntu-bold',fontSize:17,marginTop:15,color:'green'}}>MODEL: {data.modelIdentifier}</Text>
+                
             </View>
         
             

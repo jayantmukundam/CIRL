@@ -8,14 +8,14 @@ import { windowHeight, windowWidth } from "../utils/Dimensions"
 
 
 
-export default function WashingMachineListScreen({ route,navigation }) {
+export default function AirConditionerListScreen({ route,navigation }) {
 
     const {product} = route.params;
     const [lists, setList] = useState([]);
     
 
 useEffect(() => {
-    fetch('https://cirl-api.herokuapp.com/api/product/prod/WASHING%20MACHINE')
+    fetch('https://cirl-api.herokuapp.com/api/product/prod/AIR%20CONDITIONER')
       .then((response) => response.json())
       .then((json) => setList(json))
       .catch((error) => console.error(error))

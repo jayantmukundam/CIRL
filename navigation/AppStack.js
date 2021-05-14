@@ -10,8 +10,10 @@ import HomeScreen from '../screens/HomeScreen'
 import ProfileScreen from '../screens/ProfileScreen'
 import BarCodeScreen from '../screens/BarCodeScreen'
 import WashingMachineListScreen from '../screens/WashingMachineListScreen'
+import AirConditionerListScreen from '../screens/AirConditionerListScreen'
 import EditProfileScreen from '../screens/EditProfileScreen'
 import LabelScreen from '../screens/LabelScreen'
+
 
 
 const Stack = createStackNavigator()
@@ -39,6 +41,13 @@ const HomeStack = ({navigation}) => (
     <Stack.Screen
         name="ViewWashingMachineList"
         component={WashingMachineListScreen}
+        options={{
+            headerShown: false,
+          }}
+      />
+      <Stack.Screen
+        name="ViewAirConditionerList"
+        component={AirConditionerListScreen}
         options={{
             headerShown: false,
           }}

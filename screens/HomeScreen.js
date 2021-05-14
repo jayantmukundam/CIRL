@@ -38,8 +38,8 @@ export default function HomeScreen({navigation}) {
                 <TouchableOpacity
                  onPress={() => {
                     
-                    navigation.navigate('BarCode', {
-                      otherParam: 'air conditioner',
+                    navigation.navigate('ViewAirConditionerList', {
+                      product: 'air conditioner',
                     });
                   }}
                  style={{width:wp('30%')}}> 

@@ -29,19 +29,19 @@ export default function OnboardingScreen({navigation}){
      
       backgroundColor: '#38334f',
       titleStyles:{
-        fontFamily: 'ubuntu-bold',
+        fontFamily: 'ubuntu',
         fontSize:40,
       },
       subTitleStyles:{
-        fontFamily:'ubuntu-bold',
+        fontFamily:'ubuntu',
         fontSize:30,
       },
       image: <Image 
-      source={require('../assets/images/barcode.jpg')} 
-      style={{width:300 ,height:300,}}
+      source={require('../assets/images/barcode.png')} 
+      style={{width:200 ,height:200,}}
       />,
-      title: 'STEP 1',
-      subtitle: '->Press Tap to Scan\n->Now Scan the Barcode',
+      title: '',
+      subtitle: 'Click on Tap to Scan ,then scan the  Barcode',
       
       
     },
@@ -49,19 +49,40 @@ export default function OnboardingScreen({navigation}){
      
      backgroundColor: '#38334f',
      titleStyles:{
-       fontFamily: 'ubuntu-bold',
+       fontFamily: 'ubuntu',
        fontSize:40,
      },
      subTitleStyles:{
-       fontFamily:'ubuntu-bold',
+       fontFamily:'ubuntu',
        fontSize:30,
      },
      image: <Image 
      source={require('../assets/images/readlabel.png')} 
-     style={{width:300 ,height:300,}}
+     style={{width:200 ,height:200,}}
      />,
-     title: 'STEP 2',
-     subtitle: '->You will be Redirected to Label Page\n->Read our CIRL',
+     title: '',
+     subtitle: 'You will be Redirected to Label Page where you can Read our CIRL',
+     
+     
+   },
+    {
+     
+     backgroundColor: '#38334f',
+     titleStyles:{
+       fontFamily: 'ubuntu',
+       fontSize:40,
+     },
+     subTitleStyles:{
+       fontFamily:'ubuntu',
+       fontSize:30,
+       
+     },
+     image: <Image 
+     source={require('../assets/images/label.jpeg')} 
+     style={{width:200 ,height:400,}}
+     />,
+     title: '',
+     subtitle: 'The user can also select thier particular product to view the label from the list of appliances',
      
      
    },

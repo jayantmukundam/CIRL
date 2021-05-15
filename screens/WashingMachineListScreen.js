@@ -94,7 +94,7 @@ const styles = StyleSheet.create({
       padding:5,
       marginTop:40,
       alignItems:'center',
-      backgroundColor:'lightgreen',
+      //backgroundColor:'lightgreen',
     },
     titleText:{
       fontFamily:'ubuntu',

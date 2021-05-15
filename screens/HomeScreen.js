@@ -1,5 +1,5 @@
 import React,{useState,useEffect} from 'react'
-import { View, Text ,StyleSheet,Button,TouchableOpacity} from 'react-native'
+import { View, Text ,StyleSheet,Button,Image,TouchableOpacity} from 'react-native'
 import { useContext } from 'react/cjs/react.development'
 import FormButton from '../components/FormButton'
 import { AuthContext } from '../navigation/AuthProvider'
@@ -7,6 +7,7 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import "firebase/firestore";
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import { windowHeight } from '../utils/Dimensions'
+import { Directions } from 'react-native-gesture-handler'
 
 
 export default function HomeScreen({navigation}) {
@@ -14,10 +15,15 @@ export default function HomeScreen({navigation}) {
         if(loggedInWithGoogle)
             googleLogin()
     return (
-        // </View>
+      <View style={styles.bk}>
         <View>
             <View style={styles.title}>
+               <Image
+                 source={require('../assets/images/finallogo.jpeg')}
+                 style={{width:50 ,height:50,marginRight:20,}}
+                 />
                 <Text style={{fontFamily:'ubuntu-bold',fontSize:40,color:'green'}}>CIRL</Text> 
+                 
             </View>
 
             <View style={styles.firstRow}>
@@ -106,30 +112,35 @@ export default function HomeScreen({navigation}) {
                   })}
             />
           </View>
+          </View>
     )
 }
 
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: "#f9fafd",
+        backgroundColor: "green",
         flex: 1,
         justifyContent: "center",
         alignItems: "center",
         padding: 20,  
+       
     },
     title:{
+        flexDirection:'row',
+        justifyContent:'center',
+        marginRight:70,
         padding:5,
         marginTop:40,
         alignItems:'center',
-        backgroundColor:'lightgreen',
+        
         
         
     },
     text: {
         fontFamily:'ubuntu',
         margin:10,
-        fontSize:18
+        fontSize:15
     },
     firstRow:{
         margin:30,
@@ -144,4 +155,7 @@ const styles = StyleSheet.create({
         marginLeft:120,
         flexDirection:'row',
     },
+    bk:{
+      backgroundColor:'white',
+    }
 })
